@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Tone from 'tone';
 
 export default function Home() {
+  // const [typedString, setTypedString] = useState('');
+  const [playButton, setPlayButton] = useState(false);
   const synth = new Tone.Synth().toDestination();
+
   let counter = 0;
   const noteData = {
     'A': 'A4',
@@ -12,37 +15,35 @@ export default function Home() {
 
   const testString = 'abc';
   const now = Tone.now();
+  // const runTone = async () => {
+  //   await Tone.start();
+  // };
+  // runTone();
+
   const playNote = (note) => {
-
-    synth.triggerAttackRelease(note, '8n', now + counter);
-
+    playButton ? synth.triggerAttackRelease(note, '8n', now + counter) : synth.triggerAttackRelease(note, '8n');
     counter++;
   };
+
   const turnCharToNote = (char) => {
     const testChar = char.toUpperCase();
     playNote(noteData[testChar]);
-
   };
 
   const playString = (str) => {
-
-    // console.log(str, 'in playstring');
-    str.map((char) => {
-      setTimeout(() => {
+    setPlayButton(true);
+    setTimeout(() => {
+      str.map((char) => {
         turnCharToNote(char);
-      }, 1000);
-      // const note = turnCharToNote(char);
-      // playNote(note);
-    });
+      });
+    }, 1000);
   };
 
 
 
 
   return <div>
-    <textarea onChange={playNote}>
-
-    </textarea>
+    <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}></textarea>
     <button onClick={() => playString(testString.split(''))}>Click me!</button>
   </div>;
 }
