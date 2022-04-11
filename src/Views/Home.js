@@ -3,37 +3,46 @@ import * as Tone from 'tone';
 
 export default function Home() {
   const synth = new Tone.Synth().toDestination();
-
+  let counter = 0;
   const noteData = {
-    A: 'A4',
-    S: 'B4',
-    D: 'C4',
+    'A': 'A4',
+    'B': 'B4',
+    'C': 'C5',
   };
 
   const testString = 'abc';
+  const now = Tone.now();
+  const playNote = (note) => {
 
+    synth.triggerAttackRelease(note, '8n', now + counter);
+
+    counter++;
+  };
   const turnCharToNote = (char) => {
     const testChar = char.toUpperCase();
-    console.log(noteData.testChar);
+    playNote(noteData[testChar]);
+
   };
 
   const playString = (str) => {
+
     // console.log(str, 'in playstring');
     str.map((char) => {
-      turnCharToNote(char);
+      setTimeout(() => {
+        turnCharToNote(char);
+      }, 1000);
       // const note = turnCharToNote(char);
       // playNote(note);
     });
   };
 
-  playString(testString.split(''));
 
-  const playNote = () => {
-    synth.triggerAttackRelease('C4', '8n');
-  };
+
+
   return <div>
     <textarea onChange={playNote}>
-    
+
     </textarea>
+    <button onClick={() => playString(testString.split(''))}>Click me!</button>
   </div>;
 }

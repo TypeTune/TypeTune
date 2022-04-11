@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
@@ -8,9 +8,10 @@ import { useUserContext } from './context/UserContext';
 import { getUser } from './services/users';
 import Auth from './Views/Auth';
 import Home from './Views/Home';
+import Profile from './Views/Profile';
 
 function App() {
-  // const { currentUser, setCurrentUser } = useUserContext();
+  const { currentUser } = useUserContext();
 
   return (
     <div className="App">
@@ -18,10 +19,13 @@ function App() {
         <Header />
         <Switch>
           <Route path="/auth">
-            <Auth />
+            {!currentUser ? <Auth /> : <Redirect exact to="/" />}
           </Route>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/profile">
+            {currentUser ? <Profile /> : <Redirect to="/auth" />}
           </Route>
         </Switch>
       </BrowserRouter>
