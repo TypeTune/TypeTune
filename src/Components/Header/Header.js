@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { logout } from '../services/users';
+import { useUserContext } from '../../context/UserContext';
+import { logout } from '../../services/users';
 
-export default function Header({ currentUser, setCurrentUser }) {
+export default function Header() {
+  const { currentUser, setCurrentUser } = useUserContext();
   const handleLogOut = async () => {
     await logout();
     setCurrentUser(null);

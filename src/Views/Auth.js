@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AuthForm from '../Components/AuthForm';
+import AuthForm from '../Components/AuthForm/AuthForm';
+import { useUserContext } from '../context/UserContext';
 import { signInUser, signUpUser } from '../services/users';
 
-export default function Auth({ setCurrentUser }) {
+export default function Auth() {
+  const { setCurrentUser } = useUserContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authType, setAuthType] = useState('sign-in');
