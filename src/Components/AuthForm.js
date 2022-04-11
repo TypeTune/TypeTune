@@ -13,7 +13,17 @@ export default function AuthForm({ handleSubmit, setEmail, setPassword, authType
       <span className={authType === 'sign-up' && 'selected'} onClick={() => handleClick('sign-up')}>
         Sign Up
       </span>
-      <form></form>
+      <form className="authform" onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input type="email" onChange={(e) => setEmail(e.target.value)}></input>
+        </label>
+        <label>
+          Password:
+          <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
+        </label>
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
