@@ -2,43 +2,53 @@ import React from 'react';
 import * as Tone from 'tone';
 
 export default function Home() {
+  // const [typedString, setTypedString] = useState('');
   const synth = new Tone.Synth().toDestination();
-  let counter = 0;
+
   const noteData = {
-    'A': 'A4',
-    'B': 'B4',
-    'C': 'C5',
+    A: 'A4',
+    B: 'B4',
+    C: 'C5',
   };
 
-  const testString = 'abc';
+  const testString = 'abababc';
   const now = Tone.now();
+  // const runTone = async () => {
+  //   await Tone.start();
+  // };
+  // runTone();
+
   const playNote = (note) => {
-
-    synth.triggerAttackRelease(note, '8n', now + counter);
-
-    counter++;
+    synth.triggerAttackRelease(note, '8n');
   };
+
+  console.log(Tone.context, '4');
   const turnCharToNote = (char) => {
-    const testChar = char.toUpperCase();
+    const testChar = char?.toUpperCase();
     playNote(noteData[testChar]);
   };
 
-  const playString = (str) => {
-
-    // console.log(str, 'in playstring');
-    str.map((char) => {
-      setTimeout(() => {
-        turnCharToNote(char);
-      }, 1000);
-      // const note = turnCharToNote(char);
-      // playNote(note);
+  const playString = async (str) => {
+    const noteArray = str.map((char) => {
+      return noteData[char.toUpperCase()];
     });
+    let counter = 0;
+    const sequence = new Tone.Sequence((time, note) => {
+      synth.triggerAttackRelease(note, 1.5, time);
+      counter++;
+      if (counter === noteArray.length) {
+        sequence.stop();
+        Tone.Transport.stop();
+      }
+    }, noteArray).start(0);
+    await Tone.start();
+    await Tone.Transport.start();
   };
 
-  return <div>
-    <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}>
-
-    </textarea>
-    <button onClick={() => playString(testString.split(''))}>Click me!</button>
-  </div>;
+  return (
+    <div>
+      <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}></textarea>
+      <button onClick={() => playString(testString.split(''))}>Click me!</button>
+    </div>
+  );
 }
