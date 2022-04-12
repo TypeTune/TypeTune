@@ -22,11 +22,11 @@ export default function Home() {
     synth.triggerAttackRelease(note, '8n');
   };
 
-  //converts character value to note value
+  //converts character value to note value then plays note
   const turnCharToNote = (e) => {
     setTypedString(e.target.value);
     const testChar = e.nativeEvent.data?.toUpperCase();
-    playNote(noteData[testChar]);
+    setTimeout(playNote(noteData[testChar]), 1000);
   };
 
   //converts string to note array and plays as sequence
