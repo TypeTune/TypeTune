@@ -13,12 +13,12 @@ export default function Home() {
     B: 'B4',
     C: 'C5',
   };
-  
+
   //creates an instance of synthesizer and plays note
   const playNote = (note) => {
     synth.triggerAttackRelease(note, '8n');
   };
-  
+
   //converts character value to note value
   const turnCharToNote = (e) => {
     setTypedString(e.target.value);
@@ -46,16 +46,22 @@ export default function Home() {
 
   //saves text to supabase
   const handleSave = async () => {
-    try {
-      await saveText(title, typedString);
-    } catch (e) {
-      setError(e.message);
+    if (title.length > 0 && typedString.length > 0) {
+      try {
+        await saveText(title, typedString);
+      } catch (e) {
+        setError(e.message);
+        setTimeout(() => { setError(''); }, 2000);
+      }
+    } else {
+      setError(`You're missing something...`);
+      setTimeout(() => { setError(''); }, 2000);
     }
   };
 
   return (
     <div>
-      {error && <p>{error}</p>}
+      {error && <p className='errorMessage'>{error}</p>}
       <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
       <textarea value={typedString} onChange={(e) => turnCharToNote(e)}></textarea>
       <button className="playButton" onClick={() => playString(typedString.split(''))}>Click me!</button>
@@ -63,3 +69,4 @@ export default function Home() {
     </div>
   );
 }
+
