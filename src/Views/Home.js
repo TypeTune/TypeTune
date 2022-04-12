@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { saveText } from '../services/usersaves';
 import * as Tone from 'tone';
+import { noteData } from '../noteData';
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
   const [title, setTitle] = useState('');
   const [typedString, setTypedString] = useState('');
   const [error, setError] = useState('');
   const synth = new Tone.Synth().toDestination();
+  const history = useHistory();
 
-  const noteData = {
-    A: 'A4',
-    B: 'B4',
-    C: 'C5',
-  };
+  // const noteData = {
+  //   A: 'A4',
+  //   B: 'B4',
+  //   C: 'C5',
+  // };
 
   //creates an instance of synthesizer and plays note
   const playNote = (note) => {
@@ -49,6 +52,7 @@ export default function Home() {
     if (title.length > 0 && typedString.length > 0) {
       try {
         await saveText(title, typedString);
+        history.push('/profile');
       } catch (e) {
         setError(e.message);
         setTimeout(() => { setError(''); }, 2000);
