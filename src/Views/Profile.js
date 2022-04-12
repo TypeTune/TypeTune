@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchTitles } from '../services/usersaves';
+import { useUserContext } from '../context/UserContext';
+import { deleteFile, fetchTitles } from '../services/usersaves';
 
 export default function Profile() {
   const [error, setError] = useState('');
   const [savedFiles, setSavedFiles] = useState([]);
-
+  const { currentUser } = useUserContext();
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -18,16 +19,23 @@ export default function Profile() {
     }
   }, []);
 
-  // console.log(savedFiles);
+  const handleDelete = async (id) => {
+    await deleteFile(id);
+    const updated = await fetchTitles();
+    setSavedFiles(updated);
+  };
 
   return (
     <div>
-      {/* list of titles; links to edit:id pages*/}
+      {error && <p>{error}</p>}
+      <h2>WELCOME {currentUser.split('@')[0].toUpperCase()}!</h2>
       {savedFiles.map((file) => (
-        <Link key={file.id} to={`/edit:${file.id}`} >
-          <h3 >{file.title}</h3>
-        </Link>
-
+        <div key={file.id}>
+          <Link to={`/edit/${file.id}`}>
+            <h3>{file.title}</h3>
+          </Link>
+          <button onClick={() => handleDelete(file.id)}>Delete</button>
+        </div>
       ))}
     </div>
   );
