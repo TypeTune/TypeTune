@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Tone from 'tone';
 
 export default function Home() {
-  // const [typedString, setTypedString] = useState('');
+  const [typedString, setTypedString] = useState('');
   const synth = new Tone.Synth().toDestination();
 
   const noteData = {
@@ -23,8 +23,9 @@ export default function Home() {
   };
 
   console.log(Tone.context, '4');
-  const turnCharToNote = (char) => {
-    const testChar = char?.toUpperCase();
+  const turnCharToNote = (e) => {
+    setTypedString(e.target.value);
+    const testChar = e.nativeEvent.data?.toUpperCase();
     playNote(noteData[testChar]);
   };
 
@@ -47,7 +48,7 @@ export default function Home() {
 
   return (
     <div>
-      <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}></textarea>
+      <textarea onChange={(e) => turnCharToNote(e)}></textarea>
       <button onClick={() => playString(testString.split(''))}>Click me!</button>
     </div>
   );
