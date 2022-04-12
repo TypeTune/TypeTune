@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100;300;500;700;800&family=Krona+One&family=Raleway:wght@100;300;400;500;700;800&display=swap');
+
+* {
+  --color-1: hsla(55, 100%, 64%, 1);
+  --color-2: hsla(27, 96%, 52%, 1);
+  --color-3: hsla(343, 85%, 44%, 1);
+  --color-4: hsla(263, 90%, 52%, 1);
+  --color-5: hsla(137, 59%, 48%, 1);
+  margin: 0;
+}
+
 .App {
   text-align: center;
+}
+
+body {
+  border-top: 10px solid white;
 }

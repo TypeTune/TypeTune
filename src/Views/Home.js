@@ -21,7 +21,6 @@ export default function Home() {
   const turnCharToNote = (char) => {
     const testChar = char.toUpperCase();
     playNote(noteData[testChar]);
-
   };
 
   const playString = (str) => {
@@ -36,11 +35,8 @@ export default function Home() {
     });
   };
 
-
-
-
   return <div>
-    <textarea onChange={playNote}>
+    <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}>
 
     </textarea>
     <button onClick={() => playString(testString.split(''))}>Click me!</button>

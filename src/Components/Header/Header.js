@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useUserContext } from '../../context/UserContext';
 import { logout } from '../../services/users';
+import './Header.css';
 
 export default function Header() {
   const { currentUser, setCurrentUser } = useUserContext();
@@ -11,9 +12,9 @@ export default function Header() {
   };
 
   return (
-    <div>
-      TypeTune
-      <ul>
+    <div className="header">
+      <h1>TypeTune</h1>
+      <ul className="nav">
         <li>
           <NavLink className="homebutton" exact to="/">
             Home

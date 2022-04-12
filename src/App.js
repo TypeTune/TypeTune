@@ -14,7 +14,10 @@ function App() {
   const { currentUser } = useUserContext();
 
   return (
-    <div className="App">
+    <div className="App" style={{ 
+      backgroundImage:`url('background.png')`, 
+      height:`100vh`, backgroundRepeat: 'no-repeat', 
+      backgroundSize: 'cover' }}>
       <BrowserRouter>
         <Header />
         <Switch>
