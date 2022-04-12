@@ -26,7 +26,11 @@ export default function Header() {
           </NavLink>
         </li>
         {currentUser ? (
-          <li onClick={handleLogOut}>Log Out</li>
+          <li onClick={handleLogOut}>
+            <NavLink exact to="/">
+              Log Out
+            </NavLink>
+          </li>
         ) : (
           <li>
             <NavLink exact to="/auth">
