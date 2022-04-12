@@ -22,11 +22,11 @@ export default function Home() {
     synth.triggerAttackRelease(note, '8n');
   };
 
-  //converts character value to note value
+  //converts character value to note value then plays note
   const turnCharToNote = (e) => {
     setTypedString(e.target.value);
     const testChar = e.nativeEvent.data?.toUpperCase();
-    playNote(noteData[testChar]);
+    setTimeout(playNote(noteData[testChar]), 1000);
   };
 
   //converts string to note array and plays as sequence
@@ -55,22 +55,29 @@ export default function Home() {
         history.push('/profile');
       } catch (e) {
         setError(e.message);
-        setTimeout(() => { setError(''); }, 2000);
+        setTimeout(() => {
+          setError('');
+        }, 2000);
       }
     } else {
       setError(`You're missing something...`);
-      setTimeout(() => { setError(''); }, 2000);
+      setTimeout(() => {
+        setError('');
+      }, 2000);
     }
   };
 
   return (
     <div>
-      {error && <p className='errorMessage'>{error}</p>}
+      {error && <p className="errorMessage">{error}</p>}
       <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
       <textarea value={typedString} onChange={(e) => turnCharToNote(e)}></textarea>
-      <button className="playButton" onClick={() => playString(typedString.split(''))}>Click me!</button>
-      <button className="saveButton" onClick={handleSave}>save your text</button>
+      <button className="playButton" onClick={() => playString(typedString.split(''))}>
+        Click me!
+      </button>
+      <button className="saveButton" onClick={handleSave}>
+        save your text
+      </button>
     </div>
   );
 }
-
