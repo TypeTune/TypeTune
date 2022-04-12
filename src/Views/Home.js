@@ -13,24 +13,20 @@ export default function Home() {
     B: 'B4',
     C: 'C5',
   };
-
-  const testString = 'abababc';
-  const now = Tone.now();
-  // const runTone = async () => {
-  //   await Tone.start();
-  // };
-  // runTone();
-
+  
+  //creates an instance of synthesizer and plays note
   const playNote = (note) => {
     synth.triggerAttackRelease(note, '8n');
   };
-
+  
+  //converts character value to note value
   const turnCharToNote = (e) => {
     setTypedString(e.target.value);
     const testChar = e.nativeEvent.data?.toUpperCase();
     playNote(noteData[testChar]);
   };
 
+  //converts string to note array and plays as sequence
   const playString = async (str) => {
     const noteArray = str.map((char) => {
       return noteData[char.toUpperCase()];
@@ -48,6 +44,7 @@ export default function Home() {
     await Tone.Transport.start();
   };
 
+  //saves text to supabase
   const handleSave = async () => {
     try {
       await saveText(title, typedString);
@@ -59,9 +56,9 @@ export default function Home() {
   return (
     <div>
       {error && <p>{error}</p>}
-      <input onChange={(e) => setTitle(e.target.value)}></input>
-      <textarea onChange={(e) => turnCharToNote(e)}></textarea>
-      <button className="playButton" onClick={() => playString(testString.split(''))}>Click me!</button>
+      <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
+      <textarea value={typedString} onChange={(e) => turnCharToNote(e)}></textarea>
+      <button className="playButton" onClick={() => playString(typedString.split(''))}>Click me!</button>
       <button className="saveButton" onClick={handleSave}>save your text</button>
     </div>
   );
