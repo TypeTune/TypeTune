@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Tone from 'tone';
 
 export default function Home() {
   // const [typedString, setTypedString] = useState('');
-  const [playButton, setPlayButton] = useState(false);
   const synth = new Tone.Synth().toDestination();
 
-  let counter = 0;
   const noteData = {
-    'A': 'A4',
-    'B': 'B4',
-    'C': 'C5',
+    A: 'A4',
+    B: 'B4',
+    C: 'C5',
   };
 
   const testString = 'abc';
@@ -21,29 +19,33 @@ export default function Home() {
   // runTone();
 
   const playNote = (note) => {
-    playButton ? synth.triggerAttackRelease(note, '8n', now + counter) : synth.triggerAttackRelease(note, '8n');
-    counter++;
+    synth.triggerAttackRelease(note, '8n');
   };
 
   const turnCharToNote = (char) => {
-    const testChar = char.toUpperCase();
+    const testChar = char?.toUpperCase();
     playNote(noteData[testChar]);
   };
 
-  const playString = (str) => {
-    setPlayButton(true);
-    setTimeout(() => {
-      str.map((char) => {
-        turnCharToNote(char);
-      });
-    }, 1000);
+  const playString = async (str) => {
+    const noteArray = str.map((char) => {
+      return noteData[char.toUpperCase()];
+    });
+    const sequence = new Tone.Sequence((time, note) => {
+      synth.triggerAttackRelease(note, 0.2, time);
+    }, noteArray).start(0);
+    //sequence.loop = false;
+    Tone.Transport.start();
+    if (sequence.length === noteArray.length) {
+      Tone.Transport.stop();
+    }
   };
+  // once!: (event: TransportEventNames, callback: (...args: any[]) => void) => this;
 
-
-
-
-  return <div>
-    <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}></textarea>
-    <button onClick={() => playString(testString.split(''))}>Click me!</button>
-  </div>;
+  return (
+    <div>
+      <textarea onChange={(e) => turnCharToNote(e.nativeEvent.data)}></textarea>
+      <button onClick={() => playString(testString.split(''))}>Click me!</button>
+    </div>
+  );
 }
