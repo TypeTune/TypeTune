@@ -11,7 +11,7 @@ export default function Home() {
     C: 'C5',
   };
 
-  const testString = 'abc';
+  const testString = 'abababc';
   const now = Tone.now();
   // const runTone = async () => {
   //   await Tone.start();
@@ -22,6 +22,7 @@ export default function Home() {
     synth.triggerAttackRelease(note, '8n');
   };
 
+  console.log(Tone.context, '4');
   const turnCharToNote = (char) => {
     const testChar = char?.toUpperCase();
     playNote(noteData[testChar]);
@@ -31,16 +32,18 @@ export default function Home() {
     const noteArray = str.map((char) => {
       return noteData[char.toUpperCase()];
     });
+    let counter = 0;
     const sequence = new Tone.Sequence((time, note) => {
-      synth.triggerAttackRelease(note, 0.2, time);
+      synth.triggerAttackRelease(note, 1.5, time);
+      counter++;
+      if (counter === noteArray.length) {
+        sequence.stop();
+        Tone.Transport.stop();
+      }
     }, noteArray).start(0);
-    //sequence.loop = false;
-    Tone.Transport.start();
-    if (sequence.length === noteArray.length) {
-      Tone.Transport.stop();
-    }
+    await Tone.start();
+    await Tone.Transport.start();
   };
-  // once!: (event: TransportEventNames, callback: (...args: any[]) => void) => this;
 
   return (
     <div>
