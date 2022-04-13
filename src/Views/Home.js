@@ -16,6 +16,7 @@ export default function Home() {
     setSavedTitle,
     savedTypedString,
     setSavedTypedString,
+    instrument,
   } = useTextContext();
   const { currentUser } = useUserContext();
   const [error, setError] = useState('');
@@ -40,7 +41,7 @@ export default function Home() {
   const handleSave = async () => {
     if (title.length > 0 && typedString.length > 0) {
       try {
-        await saveText(title, typedString);
+        await saveText(title, typedString, instrument);
         setTitle('');
         setTypedString('');
         setSavedTitle('');

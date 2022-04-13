@@ -1,7 +1,7 @@
 import { client, checkError } from './client';
 
-export async function saveText(title, text_content) {
-  const response = await client.from('user_input').insert([{ title, text_content }]);
+export async function saveText(title, text_content, instrument) {
+  const response = await client.from('user_input').insert([{ title, text_content, instrument }]);
   return checkError(response);
 }
 
@@ -20,8 +20,11 @@ export async function fetchTextsById(id) {
   return checkError(response);
 }
 
-export async function updateTextById(id, title, typedString) {
-  const response = await client.from('user_input').update({ title: title, text_content: typedString }).match({ id });
+export async function updateTextById(id, title, typedString, instrument) {
+  const response = await client
+    .from('user_input')
+    .update({ title: title, text_content: typedString, instrument: instrument })
+    .match({ id });
   console.log(typedString);
   return checkError(response);
 }
