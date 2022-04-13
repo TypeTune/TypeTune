@@ -49,18 +49,15 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
   //converts string to note array and plays as sequence
   const playString = async (str) => {
     const words = str.split(' ');
-    // console.log(words);
     const noteArray = [];
     words.map((word) => {
       const letters = word.split('');
-      // console.log(letters.toUpperCase());
       const notes = letters.map((letter) => {
         letterCount++;
         return noteData[letter.toUpperCase()];
       });
       noteArray.push(notes);
     });
-    // console.log(noteArray, 'noteArray');
 
     let counter = 0;
     const sequence = new Tone.Sequence((time, note) => {
