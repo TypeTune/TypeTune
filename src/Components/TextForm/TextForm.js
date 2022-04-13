@@ -5,7 +5,7 @@ import { useTextContext } from '../../context/TextContext.js';
 
 export default function TextForm() {
   const { typedString, title, setTitle, setTypedString } = useTextContext();
-  const [instrument, setInstrument] = useState('Synth');
+  // const [instrument, setInstrument] = useState('Synth');
   const [synth, setSynth] = useState(new Tone.Synth().toDestination());
   // let synth = new Tone.Synth().toDestination();
 
