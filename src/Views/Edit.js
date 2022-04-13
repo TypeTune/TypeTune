@@ -31,9 +31,9 @@ export default function Edit() {
     <div>
       Edit
       {error && <p>{error}</p>}
-      <TextForm />
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={handleUpdate}>update your text</button>
+      <TextForm handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+      {/* <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleUpdate}>update your text</button> */}
     </div>
   );
 }

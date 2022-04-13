@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
 import TextForm from '../Components/TextForm/TextForm';
 import { useTextContext } from '../context/TextContext';
+import './Home.css';
 
 export default function Home() {
   const {
@@ -71,16 +72,18 @@ export default function Home() {
   return (
     <div>
       {error && <p className="errorMessage">{error}</p>}
-      <TextForm />
-      {currentUser ? (
-        <button className="saveButton" onClick={handleSave}>
-          Save your text
-        </button>
-      ) : (
-        <button className="inactiveSaveButton" onClick={handleRedirect}>
-          Sign In to save your text
-        </button>
-      )}
+      <div className='formContainer'>
+        <TextForm handleSave={handleSave} handleRedirect={handleRedirect}/>
+        {/* {currentUser ? (
+          <button className="saveButton" onClick={handleSave}>
+            Save your text
+          </button>
+        ) : (
+          <button className="inactiveSaveButton" onClick={handleRedirect}>
+            Sign In to save your text
+          </button>
+        )} */}
+      </div>
     </div>
   );
 }

@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import * as Tone from 'tone';
 import { noteData } from '../../noteData.js';
 import { useTextContext } from '../../context/TextContext.js';
+import { useUserContext } from '../../context/UserContext.js';
+import './TextForm.css';
 
-export default function TextForm() {
-  const { typedString, title, setTitle, setTypedString, instrument, setInstrument } =
+export default function TextForm({ handleRedirect, handleSave, handleDelete, handleUpdate }) {
+  const { typedString, title, setTitle, setTypedString, instrument, setInstrument, id } =
     useTextContext();
+  const { currentUser } = useUserContext();
   // const [instrument, setInstrument] = useState('Synth');
   const [synth, setSynth] = useState(new Tone.Synth().toDestination());
   // let synth = new Tone.Synth().toDestination();
@@ -61,9 +64,7 @@ export default function TextForm() {
   };
 
   return (
-    <div>
-      <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
-      <textarea value={typedString} onChange={(e) => turnCharToNote(e)}></textarea>
+    <div className='selectAndText'>
       <select value={instrument} onChange={(e) => setInstrument(e.target.value)}>
         <option value="Synth">Synth</option>
         <option value="FMSynth">FMSynth</option>
@@ -71,9 +72,30 @@ export default function TextForm() {
         <option value="DuoSynth">DuoSynth</option>
         <option value="MonoSynth">MonoSynth</option>
       </select>
-      <button className="playButton" onClick={() => playString(typedString.split(''))}>
-        Click me!
-      </button>
+      <div className='form'>
+        <input value={title} placeholder="Title your composition" onChange={(e) => setTitle(e.target.value)}></input>
+        <textarea value={typedString} placeholder="Type your masterpiece here" onChange={(e) => turnCharToNote(e)}></textarea>
+        <button className="playButton" onClick={() => playString(typedString.split(''))}>
+            Play back your composition!
+        </button>
+        {id ? 
+          <>
+            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleUpdate}>update your text</button>
+          </> :
+          <>
+            {currentUser ? (
+              <button className="saveButton" onClick={handleSave}>
+                Save your text
+              </button>
+            ) : (
+              <button className="inactiveSaveButton" onClick={handleRedirect}>
+                Sign In to save your text
+              </button>
+            )}
+          </>
+        }
+      </div>
     </div>
   );
 }
