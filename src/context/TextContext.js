@@ -9,6 +9,8 @@ const TextProvider = ({ children }) => {
   const [typedString, setTypedString] = useState('');
   const [error, setError] = useState('');
   const [instrument, setInstrument] = useState('Synth');
+  const [savedTitle, setSavedTitle] = useState('');
+  const [savedTypedString, setSavedTypedString] = useState('');
 
   useEffect(() => {
     try {
@@ -37,6 +39,10 @@ const TextProvider = ({ children }) => {
         setId,
         instrument,
         setInstrument,
+        savedTitle,
+        setSavedTitle,
+        savedTypedString,
+        setSavedTypedString,
       }}
     >
       {children}
