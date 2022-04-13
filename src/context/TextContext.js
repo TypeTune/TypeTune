@@ -8,6 +8,7 @@ const TextProvider = ({ children }) => {
   const [title, setTitle] = useState('');
   const [typedString, setTypedString] = useState('');
   const [error, setError] = useState('');
+  const [instrument, setInstrument] = useState('Synth');
 
   useEffect(() => {
     try {
@@ -15,6 +16,7 @@ const TextProvider = ({ children }) => {
         const data = await fetchTextsById(id);
         setTitle(data.title);
         setTypedString(data.text_content);
+        setInstrument(data.instrument);
       };
       if (id) fetchData();
     } catch (e) {
@@ -23,16 +25,20 @@ const TextProvider = ({ children }) => {
   }, [id]);
 
   return (
-    <TextContext.Provider value={{ 
-      title,
-      setTitle,
-      typedString,
-      setTypedString,
-      error,
-      setError,
-      id,
-      setId
-    }}>
+    <TextContext.Provider
+      value={{
+        title,
+        setTitle,
+        typedString,
+        setTypedString,
+        error,
+        setError,
+        id,
+        setId,
+        instrument,
+        setInstrument,
+      }}
+    >
       {children}
     </TextContext.Provider>
   );
