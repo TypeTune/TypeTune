@@ -8,6 +8,8 @@ const TextProvider = ({ children }) => {
   const [title, setTitle] = useState('');
   const [typedString, setTypedString] = useState('');
   const [error, setError] = useState('');
+  const [savedTitle, setSavedTitle] = useState('');
+  const [savedTypedString, setSavedTypedString] = useState('');
 
   useEffect(() => {
     try {
@@ -23,16 +25,22 @@ const TextProvider = ({ children }) => {
   }, [id]);
 
   return (
-    <TextContext.Provider value={{ 
-      title,
-      setTitle,
-      typedString,
-      setTypedString,
-      error,
-      setError,
-      id,
-      setId
-    }}>
+    <TextContext.Provider
+      value={{
+        title,
+        setTitle,
+        typedString,
+        setTypedString,
+        error,
+        setError,
+        id,
+        setId,
+        savedTitle,
+        setSavedTitle,
+        savedTypedString,
+        setSavedTypedString,
+      }}
+    >
       {children}
     </TextContext.Provider>
   );
