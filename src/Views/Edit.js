@@ -8,12 +8,13 @@ import { useTextContext } from '../context/TextContext';
 
 export default function Edit() {
   const { id } = useParams();
-  const { setId, typedString, title, error } = useTextContext();
+  const { setId, typedString, title, error, setTitle, setTypedString } = useTextContext();
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setId(id);
   }, [id, setId]);
-  
+
   const handleUpdate = async () => {
     await updateTextById(id, title, typedString);
   };

@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { saveText } from '../services/usersaves';
 import { useHistory } from 'react-router-dom';
-import { useUserContext } from '../context/UserContext';
+// import { useUserContext } from '../context/UserContext';
 import TextForm from '../Components/TextForm/TextForm';
+import { useTextContext } from '../context/TextContext';
 
 export default function Home() {
-  const { title, typedString } = useUserContext();
+  const { title, typedString, setTitle, setTypedString, setId } = useTextContext();
   // const [title, setTitle] = useState('');
   // const [typedString, setTypedString] = useState('');
   const [error, setError] = useState('');
   // const synth = new Tone.Synth().toDestination();
   const history = useHistory();
 
+  useEffect(() => {
+    setId('');
+    setTitle('');
+    setTypedString('');
+  }, [setTitle, setTypedString, setId]);
   //creates an instance of synthesizer and plays note
   // const playNote = (note) => {
   //   synth.triggerAttackRelease(note, '8n');
@@ -47,6 +53,8 @@ export default function Home() {
     if (title.length > 0 && typedString.length > 0) {
       try {
         await saveText(title, typedString);
+        setTitle('');
+        setTypedString('');
         history.push('/profile');
       } catch (e) {
         setError(e.message);

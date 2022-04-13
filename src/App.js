@@ -8,6 +8,7 @@ import Auth from './Views/Auth';
 import Home from './Views/Home';
 import Profile from './Views/Profile';
 import Edit from './Views/Edit';
+import backgroundImage from './Images/background.png';
 
 function App() {
   const { currentUser } = useUserContext();
@@ -16,7 +17,7 @@ function App() {
     <div
       className="App"
       style={{
-        backgroundImage: `url('background.png')`,
+        backgroundImage: `url(${backgroundImage})`,
         height: `100vh`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
