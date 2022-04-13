@@ -9,7 +9,7 @@ import { deleteFile } from '../services/usersaves';
 
 export default function Edit() {
   const { id } = useParams();
-  const { setId, typedString, title, error } = useTextContext();
+  const { setId, typedString, title, error, instrument } = useTextContext();
   const history = useHistory();
   // const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ export default function Edit() {
   }, [id, setId]);
 
   const handleUpdate = async () => {
-    await updateTextById(id, title, typedString);
+    await updateTextById(id, title, typedString, instrument);
     history.push('/profile');
   };
 

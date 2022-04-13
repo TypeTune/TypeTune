@@ -4,7 +4,8 @@ import { noteData } from '../../noteData.js';
 import { useTextContext } from '../../context/TextContext.js';
 
 export default function TextForm() {
-  const { typedString, title, setTitle, setTypedString } = useTextContext();
+  const { typedString, title, setTitle, setTypedString, instrument, setInstrument } =
+    useTextContext();
   // const [instrument, setInstrument] = useState('Synth');
   const [synth, setSynth] = useState(new Tone.Synth().toDestination());
   // let synth = new Tone.Synth().toDestination();
@@ -63,7 +64,7 @@ export default function TextForm() {
     <div>
       <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
       <textarea value={typedString} onChange={(e) => turnCharToNote(e)}></textarea>
-      <select onChange={(e) => setInstrument(e.target.value)}>
+      <select value={instrument} onChange={(e) => setInstrument(e.target.value)}>
         <option value="Synth">Synth</option>
         <option value="FMSynth">FMSynth</option>
         <option value="AMSynth">AMSynth</option>
