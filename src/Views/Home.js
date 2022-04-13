@@ -74,15 +74,6 @@ export default function Home() {
       {error && <p className="errorMessage">{error}</p>}
       <div className='formContainer'>
         <TextForm handleSave={handleSave} handleRedirect={handleRedirect}/>
-        {/* {currentUser ? (
-          <button className="saveButton" onClick={handleSave}>
-            Save your text
-          </button>
-        ) : (
-          <button className="inactiveSaveButton" onClick={handleRedirect}>
-            Sign In to save your text
-          </button>
-        )} */}
       </div>
     </div>
   );

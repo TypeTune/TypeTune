@@ -1,17 +1,71 @@
-.formContainer {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    margin: 50px auto;
+.formContainer * {
+  margin-top: 10px;
+}
 
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 25px;
+  padding: 50px;
+  border: 10px solid var(--color-4);
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 button {
-    width: 200px;
-    margin: auto;
+  width: 200px;
+  margin: auto;
+}
+
+.formContainer button {
+  background-color: white;
+  color: var(--color-5);
+  border: 5px solid var(--color-5);
+  border-radius: 25px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'Raleway';
+  font-size: 1.4rem;
+  font-weight: 700;
+  height: 85px;
+}
+
+.formContainer button:hover {
+  background-color: var(--color-5);
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.formContainer .deleteButton {
+  color: var(--color-3);
+  border: 5px solid var(--color-3);
+}
+
+.formContainer .deleteButton:hover {
+  background-color: var(--color-3);
+  color: white;
+}
+
+.formContainer .inactiveSaveButton {
+  border: 5px solid lightslategray;
+  background-color: rgb(223, 223, 223);
+  color: lightslategray;
+  cursor: pointer;
+}
+
+.formContainer .inactiveSaveButton:hover {
+  border: 5px solid lightslategray;
+  background-color: rgb(223, 223, 223);
+  color: lightslategray;
 }
