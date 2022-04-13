@@ -8,6 +8,7 @@ const TextProvider = ({ children }) => {
   const [title, setTitle] = useState('');
   const [typedString, setTypedString] = useState('');
   const [error, setError] = useState('');
+  const [instrument, setInstrument] = useState('Synth');
   const [savedTitle, setSavedTitle] = useState('');
   const [savedTypedString, setSavedTypedString] = useState('');
 
@@ -17,6 +18,7 @@ const TextProvider = ({ children }) => {
         const data = await fetchTextsById(id);
         setTitle(data.title);
         setTypedString(data.text_content);
+        setInstrument(data.instrument);
       };
       if (id) fetchData();
     } catch (e) {
@@ -35,6 +37,8 @@ const TextProvider = ({ children }) => {
         setError,
         id,
         setId,
+        instrument,
+        setInstrument,
         savedTitle,
         setSavedTitle,
         savedTypedString,
