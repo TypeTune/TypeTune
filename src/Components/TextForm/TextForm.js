@@ -69,6 +69,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
       if (counter === letterCount) {
         sequence.stop();
         Tone.Transport.stop();
+        letterCount = 0;
       }
     }, noteArray, '2n').start(0);
     await Tone.start();
