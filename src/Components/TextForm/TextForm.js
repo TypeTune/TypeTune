@@ -38,7 +38,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
         setSynth(new Tone.AMSynth().toDestination());
         break;
       case 'MonoSynth':
-        setSynth(new Tone.MonoSynth().toDestination());
+        setSynth(new Tone.PolySynth().toDestination());
         break;
       case 'DuoSynth':
         setSynth(new Tone.DuoSynth().toDestination());
@@ -60,6 +60,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
     });
 
     let counter = 0;
+    // if (instrument !== 'MonoSynth') {
     const sequence = new Tone.Sequence((time, note) => {
       synth.triggerAttackRelease(note, 0.5, time);
       counter++;
@@ -69,6 +70,16 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
         letterCount = 0;
       }
     }, noteArray, '2n').start(0);
+    // } else {
+    //   synth.set({ detune: -1200 });
+    //   console.log(noteArray);
+    //   synth.triggerAttackRelease(noteArray, 1);
+    //   // noteArray.map((noteGroup) => {
+    //   //   synth.triggerAttackRelease(noteGroup, 1);
+    //   //   console.log(noteGroup, 'noteGroup');
+    //   // });
+    // }
+
     await Tone.start();
     await Tone.Transport.start();
   };
