@@ -16,6 +16,12 @@ export async function deleteFile(id) {
 }
 
 export async function fetchTextsById(id) {
-  const response = await client.from('user_input').select('*').match({ id });
+  const response = await client.from('user_input').select('*').match({ id }).single();
+  return checkError(response);
+}
+
+export async function updateTextById(id, title, typedString) {
+  const response = await client.from('user_input').update({ title: title, text_content: typedString }).match({ id });
+  console.log(typedString);
   return checkError(response);
 }

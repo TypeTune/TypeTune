@@ -1,32 +1,29 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchTextsById } from '../services/usersaves';
+import { fetchTextsById, updateTextById } from '../services/usersaves';
+import { useUserContext } from '../context/UserContext';
+import TextForm from '../Components/TextForm/TextForm.js';
+import { useTextContext } from '../context/TextContext';
 
 export default function Edit() {
-  const params = useParams().id;
-  const [savedData, setSavedData] = useState([]);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const { setId, typedString, title, error } = useTextContext();
 
   useEffect(() => {
-    try {
-      fetchTextsById(params).then((data) => setSavedData(data));
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    } catch (e) {
-      setError(e.message);
-    }
-  }, [params]);
-
-  console.log(savedData);
+    setId(id);
+  }, [id, setId]);
+  
+  const handleUpdate = async () => {
+    await updateTextById(id, title, typedString);
+  };
 
   return (
     <div>
       Edit
       {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
+      <TextForm />
+      <button onClick={handleUpdate}>update your text</button>
     </div>
   );
 }

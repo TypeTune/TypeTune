@@ -5,8 +5,18 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(getUser());
+  const [title, setTitle] = useState('');
+  const [typedString, setTypedString] = useState('');
+
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <UserContext.Provider value={{ 
+      currentUser, 
+      setCurrentUser,
+      title,
+      setTitle,
+      typedString,
+      setTypedString
+    }}>
       {children}
     </UserContext.Provider>
   );
