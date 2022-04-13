@@ -1,14 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { fetchTextsById, updateTextById } from '../services/usersaves';
-import { useUserContext } from '../context/UserContext';
+import { useEffect } from 'react';
+import { updateTextById } from '../services/usersaves';
 import TextForm from '../Components/TextForm/TextForm.js';
 import { useTextContext } from '../context/TextContext';
+import { useHistory } from 'react-router-dom';
+import { deleteFile } from '../services/usersaves';
 
 export default function Edit() {
   const { id } = useParams();
-  const { setId, typedString, title, error, setTitle, setTypedString } = useTextContext();
+  const { setId, typedString, title, error } = useTextContext();
+  const history = useHistory();
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,6 +19,12 @@ export default function Edit() {
 
   const handleUpdate = async () => {
     await updateTextById(id, title, typedString);
+    history.push('/profile');
+  };
+
+  const handleDelete = async () => {
+    await deleteFile(id);
+    history.push('/profile');
   };
 
   return (
@@ -24,6 +32,7 @@ export default function Edit() {
       Edit
       {error && <p>{error}</p>}
       <TextForm />
+      <button onClick={handleDelete}>Delete</button>
       <button onClick={handleUpdate}>update your text</button>
     </div>
   );
