@@ -9,6 +9,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
   const { typedString, title, setTitle, setTypedString, instrument, setInstrument, id } =
     useTextContext();
   const { currentUser } = useUserContext();
+  let letterCount = 0;
   // const [instrument, setInstrument] = useState('Synth');
   const [synth, setSynth] = useState(new Tone.Synth().toDestination());
   // let synth = new Tone.Synth().toDestination();
@@ -47,18 +48,27 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
 
   //converts string to note array and plays as sequence
   const playString = async (str) => {
-    const noteArray = str.map((char) => {
-      return noteData[char.toUpperCase()];
+    const words = str.split(' ');
+    const noteArray = [];
+    words.map((word) => {
+      const letters = word.split('');
+      const notes = letters.map((letter) => {
+        letterCount++;
+        return noteData[letter.toUpperCase()];
+      });
+      noteArray.push(notes);
     });
+
     let counter = 0;
     const sequence = new Tone.Sequence((time, note) => {
-      synth.triggerAttackRelease(note, 1.5, time);
+      synth.triggerAttackRelease(note, 0.5, time);
       counter++;
-      if (counter === noteArray.length) {
+      if (counter === letterCount) {
         sequence.stop();
         Tone.Transport.stop();
+        letterCount = 0;
       }
-    }, noteArray).start(0);
+    }, noteArray, '2n').start(0);
     await Tone.start();
     await Tone.Transport.start();
   };
