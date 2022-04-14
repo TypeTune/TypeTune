@@ -7,7 +7,7 @@ export default function AuthForm({ handleSubmit, setEmail, setPassword, authType
   };
 
   return (
-    <div>
+    <div className="signinPage">
       <div className="signinsignup">
         <span
           className={authType === 'sign-in' && 'selected'}
