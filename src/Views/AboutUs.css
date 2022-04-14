@@ -1,14 +1,19 @@
-.team {
-  width: 80%;
-  margin: 100px auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.aboutUsContainer {
+  height: 100vh;
 }
+
 .meetTeam {
+  margin-top: 50px;
   font-family: 'Krona One';
   font-size: 3rem;
   padding-bottom: 50px;
+}
+.team {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .team h3 {
   font-family: 'Bitter';
@@ -22,6 +27,9 @@
 }
 
 .teammember {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 50px;
   background-color: white;
   border-radius: 25px;
