@@ -1,4 +1,40 @@
 .selectAndText {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+.placeholder {
+  width: 157.5px;
+  height: 100px;
+}
+
+textarea {
+  height: 20vh;
+  width: 30vw;
+  font-family: 'Bitter';
+  font-weight: 300;
+  font-size: 2rem;
+  padding: 10px;
+  resize: none;
+  border-radius: 10px;
+  border: 7px solid var(--color-2);
+}
+
+input {
+  font-family: 'Bitter';
+  font-weight: 300;
+  font-size: 1.7rem;
+  padding: 10px;
+  border: 7px solid var(--color-1);
+  border-radius: 10px;
+}
+
+select {
+  height: 75px;
+  font-size: 1.6rem;
+  font-family: 'Raleway';
+  font-weight: 600;
+  border-radius: 10px;
+  color: var(--color-3);
+  border: 5px solid var(--color-3);
 }

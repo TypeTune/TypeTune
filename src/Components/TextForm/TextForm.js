@@ -85,7 +85,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
   };
 
   return (
-    <div className='selectAndText'>
+    <div className="selectAndText">
       <select value={instrument} onChange={(e) => setInstrument(e.target.value)}>
         <option value="Synth">Synth</option>
         <option value="FMSynth">FMSynth</option>
@@ -93,30 +93,44 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
         <option value="DuoSynth">DuoSynth</option>
         <option value="MonoSynth">MonoSynth</option>
       </select>
-      <div className='form'>
-        <input value={title} placeholder="Title your composition" onChange={(e) => setTitle(e.target.value)}></input>
-        <textarea value={typedString} placeholder="Type your masterpiece here" onChange={(e) => turnCharToNote(e)}></textarea>
-        <button className="playButton" onClick={() => playString(typedString)}>
-          Play back your composition!
-        </button>
-        {id ?
-          <>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleUpdate}>update your text</button>
-          </> :
-          <>
-            {currentUser ? (
-              <button className="saveButton" onClick={handleSave}>
-                Save your text
+      <div className="form">
+        <input
+          value={title}
+          placeholder="Title your composition"
+          onChange={(e) => setTitle(e.target.value)}
+        ></input>
+        <textarea
+          value={typedString}
+          placeholder="Type your masterpiece here"
+          onChange={(e) => turnCharToNote(e)}
+        ></textarea>
+        <div className="buttons">
+          <button className="playButton" onClick={() => playString(typedString)}>
+            Play back your composition!
+          </button>
+          {id ? (
+            <>
+              <button className="deleteButton" onClick={handleDelete}>
+                Delete
               </button>
-            ) : (
-              <button className="inactiveSaveButton" onClick={handleRedirect}>
-                Sign In to save your text
-              </button>
-            )}
-          </>
-        }
+              <button onClick={handleUpdate}>Update your save</button>
+            </>
+          ) : (
+            <>
+              {currentUser ? (
+                <button className="saveButton" onClick={handleSave}>
+                  Save
+                </button>
+              ) : (
+                <button className="inactiveSaveButton" onClick={handleRedirect}>
+                  Sign in to save
+                </button>
+              )}
+            </>
+          )}
+        </div>
       </div>
+      <div className="placeholder"></div>
     </div>
   );
 }
