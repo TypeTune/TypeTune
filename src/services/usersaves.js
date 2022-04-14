@@ -6,7 +6,7 @@ export async function saveText(title, text_content, instrument) {
 }
 
 export async function fetchTitles() {
-  const response = await client.from('user_input').select('*');
+  const response = await client.from('user_input').select('*').order('id', { ascending: true });
   return checkError(response);
 }
 

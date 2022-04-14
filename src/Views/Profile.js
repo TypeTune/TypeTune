@@ -27,7 +27,7 @@ export default function Profile() {
   };
 
   return (
-    <div className='profileContainer'>
+    <div className="profileContainer">
       {error && <p>{error}</p>}
       <h2>WELCOME {currentUser.split('@')[0].toUpperCase()}!</h2>
       {savedFiles.map((file) => (
@@ -35,7 +35,9 @@ export default function Profile() {
           <Link to={`/edit/${file.id}`}>
             <h3>{file.title}</h3>
           </Link>
-          <button onClick={() => handleDelete(file.id)}>Delete</button>
+          <button className="deleteButton" onClick={() => handleDelete(file.id)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>
