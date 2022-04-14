@@ -20,10 +20,11 @@ function App() {
       className="App"
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        height: `100vh`,
+        height: '100%',
         width: `100vw`,
-        backgroundRepeat: 'repeat-y',
-        backgroundSize: 'cover',
+        backgroundRepeat: 'repeat',
+        backgroundSize: 'contain',
+        paddingBottom: '20%'
       }}
     >
       <BrowserRouter>
