@@ -1,12 +1,12 @@
 footer {
-  height: 70px;
+  height: 3vh;
   background-color: var(--color-4);
-  /* color: rgb(175, 153, 153); */
   position: fixed;
   width: 100%;
   bottom: 0px;
   text-align: right;
-  padding-top: 35px;
+  padding-top: 15px;
+  border-top: 10px solid black;
 }
 
 footer a {
