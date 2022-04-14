@@ -6,6 +6,7 @@ import TextForm from '../Components/TextForm/TextForm.js';
 import { useTextContext } from '../context/TextContext';
 import { useHistory } from 'react-router-dom';
 import { deleteFile } from '../services/usersaves';
+import './Home.css';
 
 export default function Edit() {
   const { id } = useParams();
@@ -29,11 +30,10 @@ export default function Edit() {
 
   return (
     <div>
-      Edit
       {error && <p>{error}</p>}
-      <TextForm handleDelete={handleDelete} handleUpdate={handleUpdate}/>
-      {/* <button onClick={handleDelete}>Delete</button>
-      <button onClick={handleUpdate}>update your text</button> */}
+      <div className="formContainer">
+        <TextForm handleDelete={handleDelete} handleUpdate={handleUpdate} />
+      </div>
     </div>
   );
 }
