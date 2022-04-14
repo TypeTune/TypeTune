@@ -19,8 +19,9 @@ function App() {
       className="App"
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        height: `100vh`,
-        backgroundRepeat: 'no-repeat',
+        // height: `100%`,
+        width: `100vw`,
+        backgroundRepeat: 'repeat-y',
         backgroundSize: 'cover',
       }}
     >

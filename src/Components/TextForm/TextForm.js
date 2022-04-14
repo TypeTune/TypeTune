@@ -60,15 +60,19 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
     });
 
     let counter = 0;
-    const sequence = new Tone.Sequence((time, note) => {
-      synth.triggerAttackRelease(note, 0.5, time);
-      counter++;
-      if (counter === letterCount) {
-        sequence.stop();
-        Tone.Transport.stop();
-        letterCount = 0;
-      }
-    }, noteArray, '2n').start(0);
+    const sequence = new Tone.Sequence(
+      (time, note) => {
+        synth.triggerAttackRelease(note, 0.5, time);
+        counter++;
+        if (counter === letterCount) {
+          sequence.stop();
+          Tone.Transport.stop();
+          letterCount = 0;
+        }
+      },
+      noteArray,
+      '2n'
+    ).start(0);
     await Tone.start();
     await Tone.Transport.start();
   };
@@ -94,7 +98,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
           onChange={(e) => turnCharToNote(e)}
         ></textarea>
         <div className="buttons">
-          <button className="playButton" onClick={() => playString(typedString.split(''))}>
+          <button className="playButton" onClick={() => playString(typedString)}>
             Play back your composition!
           </button>
           {id ? (
