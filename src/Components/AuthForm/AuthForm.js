@@ -23,11 +23,13 @@ export default function AuthForm({ handleSubmit, setEmail, setPassword, authType
         </span>
       </div>
       <form className="authform" onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input type="email" onChange={(e) => setEmail(e.target.value)}></input>
-        <label>Password:</label>
-        <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
-        <button>Submit</button>
+        <label>Email:
+          <input type="email" onChange={(e) => setEmail(e.target.value)}></input>
+        </label>
+        <label>Password:
+          <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
+        </label>
+        <button className='submitButton'>Submit</button>
       </form>
     </div>
   );
