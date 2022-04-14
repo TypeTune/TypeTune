@@ -18,6 +18,7 @@ export default function Home() {
     savedTypedString,
     setSavedTypedString,
     instrument,
+    setInstrument
   } = useTextContext();
   const { currentUser } = useUserContext();
   const [error, setError] = useState('');
@@ -28,6 +29,7 @@ export default function Home() {
     setId('');
     setTitle(savedTitle);
     setTypedString(savedTypedString);
+    setInstrument('Synth');
   }, [
     setTitle,
     setTypedString,
@@ -36,6 +38,7 @@ export default function Home() {
     setSavedTitle,
     savedTypedString,
     setSavedTypedString,
+    setInstrument
   ]);
 
   //saves text to supabase
@@ -73,7 +76,7 @@ export default function Home() {
     <div>
       {error && <p className="errorMessage">{error}</p>}
       <div className='formContainer'>
-        <TextForm handleSave={handleSave} handleRedirect={handleRedirect}/>
+        <TextForm handleSave={handleSave} handleRedirect={handleRedirect} />
       </div>
     </div>
   );
