@@ -1,0 +1,29 @@
+.team {
+  width: 80%;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.meetTeam {
+  font-family: 'Krona One';
+  font-size: 3rem;
+  padding-bottom: 50px;
+}
+.team h3 {
+  font-family: 'Bitter';
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.team p {
+  font-family: 'Raleway';
+  margin: 20px;
+}
+
+.teammember {
+  margin-bottom: 50px;
+  background-color: white;
+  border-radius: 25px;
+  width: 20%;
+}

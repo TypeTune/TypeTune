@@ -1,0 +1,19 @@
+footer {
+  height: 70px;
+  background-color: var(--color-4);
+  /* color: rgb(175, 153, 153); */
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  text-align: right;
+  padding-top: 35px;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Krona One';
+  font-size: 2rem;
+  margin-right: 50px;
+  cursor: pointer;
+}

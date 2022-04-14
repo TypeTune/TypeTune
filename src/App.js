@@ -10,6 +10,7 @@ import Profile from './Views/Profile';
 import Edit from './Views/Edit';
 import backgroundImage from './Images/background.png';
 import AboutUs from './Views/AboutUs';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   const { currentUser } = useUserContext();
@@ -38,6 +39,7 @@ function App() {
           <Route path="/profile">{currentUser ? <Profile /> : <Redirect to="/auth" />}</Route>
           <Route path="/edit/:id">{currentUser ? <Edit /> : <Redirect exact to="/auth" />}</Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );
