@@ -43,6 +43,55 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
       case 'DuoSynth':
         setSynth(new Tone.DuoSynth().toDestination());
         break;
+      case 'AlexSynth':
+        setSynth(
+          new Tone.MonoSynth({
+            volume: -8,
+            detune: 10,
+            portamento: 0.1,
+            envelope: {
+              attack: 0.25,
+              attackCurve: 'linear',
+              decay: 0.73,
+              decayCurve: 'exponential',
+              release: 0.8,
+              releaseCurve: 'exponential',
+              sustain: 0.4,
+            },
+            filter: {
+              Q: 1,
+              detune: 0,
+              frequency: 0,
+              gain: 0,
+              rolloff: -12,
+              type: 'lowpass',
+            },
+            filterEnvelope: {
+              attack: 0.101,
+              attackCurve: 'linear',
+              decay: 0.27,
+              decayCurve: 'exponential',
+              release: 0.28,
+              releaseCurve: 'exponential',
+              sustain: 0.71,
+              baseFrequency: 300,
+              exponent: 3,
+              octaves: 4,
+            },
+            oscillator: {
+              detune: 10,
+              frequency: 440,
+              partialCount: 8,
+              partials: [
+                1.2732395447351628, 0, 0.4244131815783876, 0, 0.25464790894703254, 0,
+                0.18189136353359467, 0,
+              ],
+              phase: 0,
+              type: 'square8',
+            },
+          }).toDestination()
+        );
+        break;
     }
   }, [instrument]);
 
@@ -85,6 +134,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
         <option value="AMSynth">AMSynth</option>
         <option value="DuoSynth">DuoSynth</option>
         <option value="MonoSynth">MonoSynth</option>
+        <option value="AlexSynth">AlexSynth</option>
       </select>
       <div className="form">
         <input
