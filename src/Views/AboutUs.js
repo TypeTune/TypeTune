@@ -5,7 +5,7 @@ import './AboutUs.css';
 export default function AboutUs() {
   return (
     <div className="aboutUsContainer">
-      <h2 className="meetTeam">Meet the TypeTune Team</h2>
+      <span className="meetTeam">Meet the TypeTune Team</span>
       <div className="team">
         <div className="teammember">
           <h3>Aidan Liddiard</h3>
@@ -15,10 +15,13 @@ export default function AboutUs() {
           </p>
           <div className="icons">
             <Link to={{ pathname: 'https://github.com/aidanliddiard' }} target="_blank">
-              <img src='github.png' />
+              <img src="github.png" />
             </Link>
-            <Link to={{ pathname: 'https://www.linkedin.com/in/aidan-liddiard-283a991b3/' }} target="_blank">
-              <img src='linkedin.png' />
+            <Link
+              to={{ pathname: 'https://www.linkedin.com/in/aidan-liddiard-283a991b3/' }}
+              target="_blank"
+            >
+              <img src="linkedin.png" />
             </Link>
           </div>
         </div>
@@ -32,10 +35,13 @@ export default function AboutUs() {
           </p>
           <div className="icons">
             <Link to={{ pathname: 'https://github.com/mary-martinez' }} target="_blank">
-              <img src='github.png' />
+              <img src="github.png" />
             </Link>
-            <Link to={{ pathname: 'http://www.linkedin.com/in/mary-diana-martinez' }} target="_blank">
-              <img src='linkedin.png' />
+            <Link
+              to={{ pathname: 'http://www.linkedin.com/in/mary-diana-martinez' }}
+              target="_blank"
+            >
+              <img src="linkedin.png" />
             </Link>
           </div>
         </div>
@@ -48,10 +54,13 @@ export default function AboutUs() {
           </p>
           <div className="icons">
             <Link to={{ pathname: 'https://github.com/m-ghiringhelli' }} target="_blank">
-              <img src='github.png' />
+              <img src="github.png" />
             </Link>
-            <Link to={{ pathname: 'https://www.linkedin.com/in/marcus-ghiringhelli/' }} target="_blank">
-              <img src='linkedin.png' />
+            <Link
+              to={{ pathname: 'https://www.linkedin.com/in/marcus-ghiringhelli/' }}
+              target="_blank"
+            >
+              <img src="linkedin.png" />
             </Link>
           </div>
         </div>
@@ -63,10 +72,10 @@ export default function AboutUs() {
           </p>
           <div className="icons">
             <Link to={{ pathname: 'https://github.com/AlexOrlet89' }} target="_blank">
-              <img src='github.png' />
+              <img src="github.png" />
             </Link>
             <Link to={{ pathname: 'https://www.linkedin.com/in/alexorlet89/' }} target="_blank">
-              <img src='linkedin.png' />
+              <img src="linkedin.png" />
             </Link>
           </div>
         </div>

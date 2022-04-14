@@ -13,19 +13,18 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div className='left'>
-        <img className='logo' src='TypeTuneLogo.png' />
+      <div className="left">
+        <img className="logo" src="TypeTuneLogo.png" />
         <h1>TypeTune</h1>
-
       </div>
       <ul className="nav">
         <li>
           <NavLink className="homebutton" exact to="/">
-            Home
+            Create
           </NavLink>
         </li>
         <li>
-          <NavLink className="profile" exact to="/profile">
+          <NavLink className="profileButton" exact to="/profile">
             Profile
           </NavLink>
         </li>
@@ -37,7 +36,7 @@ export default function Header() {
           </li>
         ) : (
           <li>
-            <NavLink exact to="/auth">
+            <NavLink className="signInButton" exact to="/auth">
               Sign In / Sign Up
             </NavLink>
           </li>

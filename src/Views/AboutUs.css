@@ -1,12 +1,16 @@
 .aboutUsContainer {
   height: 100vh;
+  margin-top: 50px;
 }
 
 .meetTeam {
-  margin-top: 50px;
   font-family: 'Krona One';
   font-size: 3rem;
-  padding-bottom: 50px;
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  margin: 50px auto;
+  padding: 10px;
 }
 .team {
   width: 80%;

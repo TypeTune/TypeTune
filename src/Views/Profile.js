@@ -30,6 +30,7 @@ export default function Profile() {
     <div className="profileContainer">
       {error && <p>{error}</p>}
       <h2>WELCOME {currentUser.split('@')[0].toUpperCase()}!</h2>
+      <p>Click on a file to update your composition!</p>
       {savedFiles.map((file) => (
         <div key={file.id} className="savedFile">
           <Link to={`/edit/${file.id}`}>

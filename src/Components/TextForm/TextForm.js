@@ -149,14 +149,14 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
         ></textarea>
         <div className="buttons">
           <button className="playButton" onClick={() => playString(typedString)}>
-            Play back your composition!
+            Playback
           </button>
           {id ? (
             <>
               <button className="deleteButton" onClick={handleDelete}>
                 Delete
               </button>
-              <button onClick={handleUpdate}>Update your save</button>
+              <button onClick={handleUpdate}>Update</button>
             </>
           ) : (
             <>

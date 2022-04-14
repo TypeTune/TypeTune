@@ -5,15 +5,16 @@ footer {
   width: 100%;
   bottom: 0px;
   text-align: right;
-  padding-top: 15px;
-  border-top: 10px solid black;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  border-top: 7px solid black;
 }
 
 footer a {
   text-decoration: none;
   color: white;
   font-family: 'Krona One';
-  font-size: 2rem;
+  font-size: 1rem;
   margin-right: 50px;
   cursor: pointer;
 }

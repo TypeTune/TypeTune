@@ -6,7 +6,6 @@
   align-items: center;
   border-bottom: 10px solid black;
   padding-bottom: 20px;
-  
 }
 .left {
   display: flex;
@@ -49,12 +48,18 @@ h1 {
   margin-right: 50px;
 }
 
-.nav li:hover {
+.signInButton:hover,
+.profileButton:hover,
+.homebutton:hover {
   background-color: hsla(263, 90%, 32%, 1);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .nav .active {
   background-color: hsla(263, 90%, 32%, 1);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .logOutButton .active {

@@ -29,7 +29,7 @@ span {
   height: 400px;
   margin: auto;
   align-items: center;
-  padding: 10px 0px;
+  padding-top: 50px;
   border: black 2px solid;
   border-radius: 15px;
 }
