@@ -10,6 +10,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
     useTextContext();
   const { currentUser } = useUserContext();
   let letterCount = 0;
+  let wordCount = 0;
   // const [instrument, setInstrument] = useState('Synth');
   const [synth, setSynth] = useState(new Tone.Synth().toDestination());
   // let synth = new Tone.Synth().toDestination();
@@ -60,29 +61,37 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
     });
 
     let counter = 0;
-    // if (instrument !== 'MonoSynth') {
-    const sequence = new Tone.Sequence((time, note) => {
-      synth.triggerAttackRelease(note, 0.5, time);
-      counter++;
-      if (counter === letterCount) {
-        sequence.stop();
-        Tone.Transport.stop();
-        letterCount = 0;
-      }
-    }, noteArray, '2n').start(0);
-    // } else {
-    //   synth.set({ detune: -1200 });
-    //   console.log(noteArray);
-    //   synth.triggerAttackRelease(noteArray, 1);
-    //   // noteArray.map((noteGroup) => {
-    //   //   synth.triggerAttackRelease(noteGroup, 1);
-    //   //   console.log(noteGroup, 'noteGroup');
-    //   // });
-    // }
+    if (instrument !== 'MonoSynth') {
+      const sequence = new Tone.Sequence((time, note) => {
+        synth.triggerAttackRelease(note, 0.5, time);
+        counter++;
+        if (counter === letterCount) {
+          sequence.stop();
+          Tone.Transport.stop();
+          letterCount = 0;
+        }
+      }, noteArray, '2n').start(0);
+    } else {
+      synth.set({ detune: -1200 });
+      console.log(noteArray);
+      noteArray.map((noteGroup) => {
+        const sequence = new Tone.Sequence((time, note) => {
+          synth.triggerAttackRelease(note, 0.5, time);
+          counter++;
+          if (counter === wordCount) {
+            sequence.stop();
+            Tone.Transport.stop();
+            wordCount = 0;
+          }
+        }, noteGroup, '2n').start();
 
+      });
+    }
     await Tone.start();
     await Tone.Transport.start();
   };
+
+
 
   return (
     <div className="selectAndText">
