@@ -19,7 +19,6 @@ const TextProvider = ({ children }) => {
         setTitle(data.title);
         setTypedString(data.text_content);
         setInstrument(data.instrument);
-        console.log(data.instrument, 'instrument');
       };
       if (id) fetchData();
     } catch (e) {

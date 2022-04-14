@@ -25,6 +25,5 @@ export async function updateTextById(id, title, typedString, instrument) {
     .from('user_input')
     .update({ title: title, text_content: typedString, instrument: instrument })
     .match({ id });
-  console.log(typedString);
   return checkError(response);
 }

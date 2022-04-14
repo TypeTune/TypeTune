@@ -12,7 +12,6 @@ export default function Edit() {
   const { id } = useParams();
   const { setId, typedString, title, error, instrument } = useTextContext();
   const history = useHistory();
-  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setId(id);

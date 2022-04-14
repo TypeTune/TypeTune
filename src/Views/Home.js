@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { saveText } from '../services/usersaves';
 import { useHistory } from 'react-router-dom';
-import { useUserContext } from '../context/UserContext';
 import TextForm from '../Components/TextForm/TextForm';
 import { useTextContext } from '../context/TextContext';
 import './Home.css';
@@ -18,14 +17,12 @@ export default function Home() {
     savedTypedString,
     setSavedTypedString,
     instrument,
-    setInstrument
+    setInstrument,
   } = useTextContext();
-  const { currentUser } = useUserContext();
   const [error, setError] = useState('');
   const history = useHistory();
 
   useEffect(() => {
-    // if (savedTitle || savedTypedString)
     setId('');
     setTitle(savedTitle);
     setTypedString(savedTypedString);
@@ -38,7 +35,7 @@ export default function Home() {
     setSavedTitle,
     savedTypedString,
     setSavedTypedString,
-    setInstrument
+    setInstrument,
   ]);
 
   //saves text to supabase
@@ -65,7 +62,7 @@ export default function Home() {
     }
   };
 
-  //handler for redirecting when user is not signed in and trys to save
+  //handler for redirecting when user is not signed in and tries to save
   const handleRedirect = () => {
     setSavedTitle(title);
     setSavedTypedString(typedString);
@@ -75,7 +72,7 @@ export default function Home() {
   return (
     <div>
       {error && <p className="errorMessage">{error}</p>}
-      <div className='formContainer'>
+      <div className="formContainer">
         <TextForm handleSave={handleSave} handleRedirect={handleRedirect} />
       </div>
     </div>
