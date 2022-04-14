@@ -13,7 +13,11 @@ export default function Header() {
 
   return (
     <div className="header">
-      <h1>TypeTune</h1>
+      <div className='left'>
+        <img className='logo' src='TypeTuneLogo.png' />
+        <h1>TypeTune</h1>
+
+      </div>
       <ul className="nav">
         <li>
           <NavLink className="homebutton" exact to="/">
