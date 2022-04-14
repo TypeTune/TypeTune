@@ -1,0 +1,41 @@
+.aboutUsContainer {
+  height: 100vh;
+  margin-top: 50px;
+}
+
+.meetTeam {
+  font-family: 'Krona One';
+  font-size: 3rem;
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  margin: 50px auto;
+  padding: 10px;
+}
+.team {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.team h3 {
+  font-family: 'Bitter';
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.team p {
+  font-family: 'Raleway';
+  margin: 20px;
+}
+
+.teammember {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  background-color: white;
+  border-radius: 25px;
+  width: 20%;
+}
