@@ -22,11 +22,11 @@ Whether you're writing an email, a eulogy, or a few lines of code, TypeTune is t
 
 ## Deployed Site:
 
-[View our deployed site on Netlify.] (https://deploy-preview-3--storied-halva-befe02.netlify.app/)
+[View our deployed site on Netlify.](https://storied-halva-befe02.netlify.app/)
 
 ## Our Plan:
 
-[Check out our Miro Board here.] (https://miro.com/app/board/uXjVOKyLi0Q=/)
+[Check out our Miro Board here.](https://miro.com/app/board/uXjVOKyLi0Q=/)
 
 ## Technologies:
 
