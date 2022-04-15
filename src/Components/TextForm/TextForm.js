@@ -10,9 +10,7 @@ export default function TextForm({ handleRedirect, handleSave, handleDelete, han
     useTextContext();
   const { currentUser } = useUserContext();
   let letterCount = 0;
-  // const [instrument, setInstrument] = useState('Synth');
   const [synth, setSynth] = useState(new Tone.Synth().toDestination());
-  // let synth = new Tone.Synth().toDestination();
 
   //creates an instance of synthesizer and plays note
   const playNote = (note) => {

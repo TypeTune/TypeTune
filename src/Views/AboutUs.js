@@ -83,5 +83,3 @@ export default function AboutUs() {
     </div>
   );
 }
-
-// name job favorite song or instrument linked ins git huuubs
