@@ -4,7 +4,7 @@
 Whether you're writing an email, a eulogy, or a few lines of code, TypeTune is the place for you to type. Simply open the app, choose a synth that matches the mood of your work, create your composition (each letter plays a note), then hit playback to hear your text turned into music. Sign in to save your masterpiece.
 
 ## DEV Team
-* Aidan Liddiard-- [GitHub] (https://github.com/aidanliddiard) | [LinkedIn] (https://www.linkedin.com/in/aidan-liddiard-283a991b3
+* Aidan Liddiard-- [GitHub](https://github.com/aidanliddiard) | [LinkedIn] (https://www.linkedin.com/in/aidan-liddiard-283a991b3
 * Mary Martinez-- [GitHub] (https://github.com/mary-martinez) | [LinkedIn] (www.linkedin.com/in/mary-martinez-6624a5b4)
 * Marcus Ghiringhelli-- [GitHub] (https://github.com/m-ghiringhelli) | [LinkedIn] (https://www.linkedin.com/in/marcus-ghiringhelli)
 * Alex Orlet-- [GitHub] (https://github.com/AlexOrlet89) | [LinkedIn] (https://www.linkedin.com/in/alexorlet89/)
