@@ -64,6 +64,7 @@ button {
   background-color: rgb(223, 223, 223);
   color: lightslategray;
   cursor: pointer;
+  width: 180px;
 }
 
 .formContainer .inactiveSaveButton:hover {
