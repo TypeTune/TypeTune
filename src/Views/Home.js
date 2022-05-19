@@ -22,21 +22,21 @@ export default function Home() {
   const [error, setError] = useState('');
   const history = useHistory();
 
-  useEffect(() => {
-    setId('');
-    setTitle(savedTitle);
-    setTypedString(savedTypedString);
-    setInstrument('Synth');
-  }, [
-    setTitle,
-    setTypedString,
-    setId,
-    savedTitle,
-    setSavedTitle,
-    savedTypedString,
-    setSavedTypedString,
-    setInstrument,
-  ]);
+  // useEffect(() => {
+  //   setId('');
+  //   setTitle(savedTitle);
+  //   setTypedString(savedTypedString);
+  //   setInstrument('Synth');
+  // }, [
+  //   setTitle,
+  //   setTypedString,
+  //   setId,
+  //   savedTitle,
+  //   setSavedTitle,
+  //   savedTypedString,
+  //   setSavedTypedString,
+  //   setInstrument,
+  // ]);
 
   //saves text to supabase
   const handleSave = async () => {
@@ -45,8 +45,8 @@ export default function Home() {
         await saveText(title, typedString, instrument);
         setTitle('');
         setTypedString('');
-        setSavedTitle('');
-        setSavedTypedString('');
+        // setSavedTitle('');
+        // setSavedTypedString('');
         history.push('/profile');
       } catch (e) {
         setError(e.message);
@@ -64,8 +64,8 @@ export default function Home() {
 
   //handler for redirecting when user is not signed in and tries to save
   const handleRedirect = () => {
-    setSavedTitle(title);
-    setSavedTypedString(typedString);
+    // setSavedTitle(title);
+    // setSavedTypedString(typedString);
     history.push('/auth');
   };
 
